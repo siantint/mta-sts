@@ -1,0 +1,8 @@
+_mta-sts.siant.com.sg.      1800    IN    TXT   v=STSv1; id=20200925224500
+_smtp._tls.siant.com.sg.    1800    IN    TXT   v=TLSRPTv1; rua=mailto:smtp-tls-reports@siant.com.sg
+
+_mta-sts.benkei.com.sg.     1800    IN    TXT   v=STSv1; id=20200925224500
+_smtp._tls.benkei.com.sg.   1800    IN    TXT   v=TLSRPTv1; rua=mailto:smtp-tls-reports@benkei.com.sg
+
+_mta-sts.silicon.com.sg.    1800    IN    TXT   v=STSv1; id=20200925224500
+_smtp._tls.silicon.com.sg.  1800    IN    TXT   v=TLSRPTv1; rua=mailto:smtp-tls-reports@silicon.com.sg
