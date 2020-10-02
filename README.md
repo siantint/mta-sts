@@ -79,6 +79,16 @@ access point
 
 ## <a name='policy-host' />Use CloudFront to distribute policy
 
+* Create S3 bucket for logs
+
+```
+> aws s3 mb s3://logs.siant.com.sg/
+> aws s3api put-public-access-block \
+    --bucket logs.siant.com.sg
+    --public-access-block-configuration \
+    "BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true"
+```
+
 * Create CloudFront distribution
 
 ```

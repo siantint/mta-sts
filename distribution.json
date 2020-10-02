@@ -79,10 +79,10 @@
     },
     "Comment": "Serve MTA-STS policy file",
     "Logging": {
-        "Enabled": false,
+        "Enabled": true,
         "IncludeCookies": false,
-        "Bucket": "",
-        "Prefix": ""
+        "Bucket": "logs.siant.com.sg.s3.amazonaws.com",
+        "Prefix": "mta-sts/cloudfront"
     },
     "PriceClass": "PriceClass_All",
     "Enabled": false,
