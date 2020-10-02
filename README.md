@@ -6,6 +6,7 @@ Table of Contents
    * [Create SSL certificate](#policy-ssl)
    * [Upload policy file](#policy-upload)
    * [Grant CloudFront access to S3 bucket](#policy-perms)
+   * [Use CloudFront to distribute policy](#policy-host)
 
 
 
@@ -73,4 +74,14 @@ access point
 > aws s3api put-bucket-policy
     --bucket $s3bucket \
     --policy $(envsubst < bucket-policy.json)
+```
+
+
+## <a name='policy-host' />Use CloudFront to distribute policy
+
+* Create CloudFront distribution
+
+```
+> export certarn
+> aws cloudfront create-distribution --distribution-config "$(envsubst < distribution.json)"
 ```
