@@ -5,6 +5,7 @@ Table of Contents
 * [Host policy file over HTTPS](#policy)
    * [Create SSL certificate](#policy-ssl)
    * [Upload policy file](#policy-upload)
+   * [Grant CloudFront access to S3 bucket](#policy-perms)
 
 
 
@@ -51,4 +52,25 @@ access point
     --bucket $s3bucket
     --public-access-block-configuration \
     "BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true"
+```
+
+
+## <a name='policy-perms' />Grant CloudFront access to S3 bucket
+
+1. Create dedicated CloudFront origin access identity (or fetch if exists)
+
+```
+> cfoai=$(aws cloudfront create-cloud-front-access-identity \
+    --cloud-front-origin-identity-config \
+        CallerReference=mta-sts,Comment=mta-sts)
+> cfoai=$(jq -r '.CloudFrontOriginAccessIdentity.Id' <<< "$cfoai")
+```
+
+1. Grant CloudFront OAI fetch permission from S3 bucket
+
+```
+> export cfoai s3bucket
+> aws s3api put-bucket-policy
+    --bucket $s3bucket \
+    --policy $(envsubst < bucket-policy.json)
 ```
